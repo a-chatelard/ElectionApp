@@ -4,8 +4,8 @@ namespace ElectionApp
 {
     public class Scrutin
     {
+        public bool Cloture { get; set; } = false;
 
-        public bool Cloture { get; set; }
-        public List<Candidat> Candidats = new();
+        public List<Tour> Tours = new();
     }
 }
