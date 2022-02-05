@@ -2,7 +2,9 @@
 
 @pourcentageParCandidat
 Scenario: Calcul du pourcentage du scrutin pour chaque candidat
-Given un premier candidat avec 75 votes
+Given un scrutin non clôturé
+And le premier tour
+And un premier candidat avec 75 votes
 And un second candidat avec 25 votes
 When le pourcentage de votes est calculé
 Then le premier candidat a 75% des votes
