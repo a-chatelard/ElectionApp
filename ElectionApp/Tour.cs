@@ -37,7 +37,8 @@ namespace ElectionApp
          */
 
         /*
-         *Cas du vote blanc : le vote blanc est comptabilisé. Si vote blanc >50% au premier tour, il n'y a pas de vainqueur au scrutin. Une nouvelle élection doit avoir lieu 
+         *Cas du vote blanc : le vote blanc est comptabilisé. Si vote blanc >50% au premier tour, il n'y a pas de vainqueur au scrutin. Une nouvelle élection doit avoir lieu.
+         Dans le cas d'un second tour, pour être élu, le candidat doit avoir plus de 50% des suffrages exprimés pour être élu. Sinon, une nouvelle élection doit avoir lieu.
          */
         public List<Candidat> GetVainqueur()
         {
