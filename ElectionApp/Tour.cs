@@ -32,6 +32,13 @@ namespace ElectionApp
             return (float)voteCandidat / totalVote * 100;
         } 
 
+        /*
+         *Cas de l'égalité entre le 2eme et le 3eme candidat au premier tour : le tour est annulé.  
+         */
+
+        /*
+         *Cas du vote blanc : le vote blanc est comptabilisé. Si vote blanc >50% au premier tour, il n'y a pas de vainqueur au scrutin. Une nouvelle élection doit avoir lieu 
+         */
         public List<Candidat> GetVainqueur()
         {
             var vainqueurs = new List<Candidat>();
