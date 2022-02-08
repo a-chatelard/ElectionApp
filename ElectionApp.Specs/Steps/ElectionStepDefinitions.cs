@@ -63,6 +63,17 @@ namespace ElectionApp.Specs.Steps
             _scenarioContext["tour"] = tour;
         }
 
+        [Given(@"(.*) votes blanc")]
+        public void GivenVotesBlanc(int nbVotes)
+        {
+            var blanc = new Candidat();
+            _scenarioContext["voteBlanc"] = blanc;
+            var tour = (Tour)_scenarioContext["tour"];
+            var voteBlancTour = new CandidatTour(blanc, nbVotes, tour);
+            tour.CandidatsTours.Add(voteBlancTour);
+            _scenarioContext["tour"] = tour;
+        }
+
         [When(@"le pourcentage de votes est calculé")]
         public void WhenLePourcentageDeVotesEstCalcule()
         {

@@ -35,18 +35,33 @@ namespace ElectionApp
         public List<Candidat> GetVainqueur()
         {
             var vainqueurs = new List<Candidat>();
-            var resultatsCandidats = CandidatsTours.OrderByDescending(c => GetPourcentageVoteCandidat(c.Candidat)).ToList();
-            var pourcentagePremierCandidat = GetPourcentageVoteCandidat(resultatsCandidats[0].Candidat);
-            if (pourcentagePremierCandidat > 50)
+            var pourcentagesCandidats = CandidatsTours.Select(c => new {
+                Candidat = c.Candidat,
+                Pourcentage = GetPourcentageVoteCandidat(c.Candidat)
+            }).ToList();
+            var classementCandidats = pourcentagesCandidats.OrderByDescending(c => c.Pourcentage).ToList();
+            
+            if (classementCandidats[0].Pourcentage > 50)
             {
-                vainqueurs.Add(resultatsCandidats[0].Candidat);
+                if (classementCandidats[0].Candidat.Nom == null)
+                {
+                    return vainqueurs;
+                }
+                vainqueurs.Add(classementCandidats[0].Candidat);
             }
             else
             {
                 if (Numero == 1)
                 {
-                    vainqueurs.Add(resultatsCandidats[0].Candidat);
-                    vainqueurs.Add(resultatsCandidats[1].Candidat);
+                    if (classementCandidats.Count > 2)
+                    {
+                        if (classementCandidats[1].Pourcentage == classementCandidats[2].Pourcentage)
+                        {
+                            return vainqueurs;
+                        }
+                        vainqueurs.Add(classementCandidats[1].Candidat);
+                    }
+                    vainqueurs.Add(classementCandidats[0].Candidat);
                 } 
             }
             return vainqueurs;

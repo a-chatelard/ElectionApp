@@ -8,6 +8,8 @@ namespace ElectionApp
 
         public List<CandidatTour> CandidatsTours { get; set; } = null;
 
+        public Candidat() { }
+
         public Candidat(string nom)
         {
             Nom = nom;

@@ -20,7 +20,7 @@ namespace ElectionApp
             List<Candidat> vainqueurs = tourActuel.GetVainqueur();
             if (vainqueurs.Count == 0)
             {
-                return "Aucun vainqueur pour ce tour.";
+                return "Aucun vainqueur pour ce scrutin.";
             } else if (vainqueurs.Count == 1)
             {
                 return vainqueurs.Single().Nom + " est le vainqueur.";
